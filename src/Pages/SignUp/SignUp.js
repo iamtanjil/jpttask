@@ -1,8 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import signImg from '../../Assests/121-1218449_ecommerce-shopping-cart-png-image-background-online-shop.png';
+import { AuthProvider } from "../../Context/AuthContext";
 
 const SignUp = () => {
+    const {createUser} = useContext(AuthProvider);
+    const navigate = useNavigate();
+
+    const handleSignUp = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUser(email, password)
+        .then(user => {
+            toast.success('Sign up successfully');
+            navigate('/');
+        })
+    }
+
   return (
     <div className="hero min-h-screen bg-base-100">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -12,19 +29,9 @@ const SignUp = () => {
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <h2 className="text-3xl text-center mt-5">Sign Up</h2>
           <form
+          onSubmit={handleSignUp}
             className="card-body mx-auto p-3"
           >
-            <div className="form-control w-full max-w-xs">
-              <label className="label">
-                <span className="text-lg">Name</span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                className="input input-bordered w-full max-w-xs"
-              />
-            </div>
             <div className="form-control w-full max-w-xs">
               <label className="label">
                 <span className="text-lg">Email</span>
@@ -50,16 +57,6 @@ const SignUp = () => {
                 <a href="./">Forget password?</a>
               </span>
               
-            </div>
-            <div className="form-control w-full">
-              <label className="label">
-                <span className="text-lg">Upload Your Photo</span>
-              </label>
-              <input
-                type="file"
-                name="image"
-                className="file-input file-input-bordered file-input-primary w-full"
-              />
             </div>
             <input
               className="btn btn-primary mt-5 mb-3"
