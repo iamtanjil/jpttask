@@ -1,3 +1,4 @@
+import Apply from "../Pages/Apply/Apply";
 import About from "../Pages/Home/About/About";
 import ContactUs from "../Pages/Home/ContactUs/ContactUs";
 import Login from "../Pages/Login/Login";
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         {
             path: "/contact",
             element: <ContactUs></ContactUs>
+        },
+        {
+            path: "/apply",
+            element: <Apply></Apply>
         },
     ]
   },

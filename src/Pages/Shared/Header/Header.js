@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthProvider } from "../../../Context/AuthContext";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthProvider);
   const navItems = (
     <>
       <li>
@@ -56,9 +58,15 @@ const Header = () => {
             <input type="checkbox" className="toggle ml-2" />
           </label>
         </div>
-        <Link to="/login" className="btn">
-          Login
-        </Link>
+        {user ? (
+          <Link onClick={logOut} className="btn">
+            LogOut
+          </Link>
+        ) : (
+          <Link to="/login" className="btn">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
