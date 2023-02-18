@@ -3,6 +3,7 @@ import About from "../Pages/Home/About/About";
 import ContactUs from "../Pages/Home/ContactUs/ContactUs";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import PrivateRoutes from "./PrivateRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../Layout/Main");
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
         },
         {
             path: "/apply",
-            element: <Apply></Apply>
+            element: <PrivateRoutes><Apply></Apply></PrivateRoutes>
         },
     ]
   },
