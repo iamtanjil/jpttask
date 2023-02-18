@@ -1,0 +1,14 @@
+.contact-bg{
+    background-image: url(../../../Assests//img-2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+
+
+@media only screen and (max-width: 1024px) {
+    .contact-bg{
+        background-image: none;
+    }
+}
